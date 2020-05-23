@@ -1,0 +1,66 @@
+  <!-- https://getbootstrap.com/docs/4.4/components/card/ -->
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Cliente</h5>  
+      <div class="row">
+        <div class="form-group col-lg-12">
+          <label for="nome"class="control-label">Nome:</label>
+          <input type="text" class="form-control" [(ngModel)]="cliente.nome" />
+        </div>            
+      </div>
+
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-primary" (click)="pesquisar()">
+            <span *ngIf= "carregando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span class="sr-only">Loading...</span>
+            Pesquisar</button>
+        </div>
+        
+      </div> 
+
+      <div class="row">
+        <div class="col-lg-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Codigo</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>CEP</th>
+                <th>UF</th>
+                <th>Cidade</th>
+                <th>Telefone</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cliente of listaCliente">
+                <th><input type="radio" name="selecionado" (change)="selecionar(cliente)"/></th>
+                <th>{{cliente.codigo}}</th>
+                <td>{{cliente.nome}}</td>    
+                <td>{{cliente.endereco}}</td>                    
+                <td>{{cliente.ceo}}</td>                    
+                <td>{{cliente.uf}}</td>                    
+                <td>{{cliente.cidade}}</td>                    
+                <td>{{cliente.telefone}}</td>                                      
+              </tr>                  
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="incluir()">Incluir</button>
+          <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="alterar()">Alterar</button>
+          <button *ngIf= "operacao != 'Pesquisar'" type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="remover()">
+            <span *ngIf= "carregando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span class="sr-only">Loading...</span>
+            Excluir</button>
+        </div>
+      </div>
+
+    </div>
+</div>

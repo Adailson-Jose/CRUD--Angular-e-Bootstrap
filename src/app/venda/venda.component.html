@@ -1,0 +1,61 @@
+
+<!-- https://getbootstrap.com/docs/4.4/components/card/ -->
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Venda</h5>  
+        <div class="row">
+        <div class="form-group col-lg-12">
+            <label for="cleinte"class="control-label">Cliente:</label>
+
+            <select [(ngModel)]="venda.cliente" class="form-control">
+            <option [ngValue]="null">Selecione</option>  
+            <option *ngFor="let cliente of listaCliente" [ngValue]="cliente">{{cliente.nome}}</option>
+            </select>
+
+        </div>            
+        </div>
+        <div class="row" style="margin-bottom: 20px;">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" (click)="pesquisar()">
+                <span *ngIf= "carregando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span class="sr-only">Loading...</span>
+                    Pesquisar
+            </button>
+        </div>
+        </div> 
+        
+        <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+            <thead>
+                <tr>
+                <th></th>
+                <th>Codigo</th>
+                <th>Nome</th>   
+                <th>Data da Venda</th>                                
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let venda of listaVenda">
+                <th><input type="radio" name="selecionado" (change)="selecionar(venda)"/></th>
+                <th>{{venda.codigo}}</th>
+                <td>{{venda.cliente.nome}}</td>
+                <td>{{venda.data | date: 'dd/MM/yyyy'}}</td>
+                </tr>                  
+            </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 20px;">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="incluir()">Incluir</button>
+            <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="remover()">
+                <span *ngIf= "carregando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span class="sr-only">Loading...</span>
+            Excluir</button>
+        </div>
+        </div>
+
+    </div>
+</div>

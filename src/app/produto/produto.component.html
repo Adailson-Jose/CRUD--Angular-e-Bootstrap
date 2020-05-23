@@ -1,0 +1,61 @@
+  <!-- https://getbootstrap.com/docs/4.4/components/card/ -->
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Produto</h5>  
+      <div class="row">
+        <div class="form-group col-lg-12">
+          <label for="nome"class="control-label">Nome:</label>
+          <input type="text" class="form-control" [(ngModel)]="produto.nome" />
+        </div>            
+      </div>
+
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-primary" (click)="pesquisar()">
+            <span *ngIf= "carregando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span class="sr-only">Loading...</span>
+            Pesquisar</button>
+        </div>
+        
+      </div> 
+
+      <div class="row">
+        <div class="col-lg-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Codigo</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Observação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let produto of listaProduto">
+                <th><input type="radio" name="selecionado" (change)="selecionar(produto)"/></th>
+                <th>{{produto.codigo}}</th>
+                <td>{{produto.nome}}</td>    
+                <td>{{produto.descricao}}</td>                    
+                <td>{{produto.valor}}</td>                    
+                <td>{{produto.observacao}}</td>                    
+              </tr>                  
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="incluir()">Incluir</button>
+          <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="alterar()">Alterar</button>
+          <button *ngIf= "operacao != 'Pesquisar'" type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="remover()">
+            <span *ngIf= "carregando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span class="sr-only">Loading...</span>
+            Excluir</button>
+        </div>
+      </div>
+
+    </div>
+</div>

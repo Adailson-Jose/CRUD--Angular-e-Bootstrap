@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+			</button>
+  <a class="navbar-brand" href="#">Home</a>
+  <div class="navbar-collapse" id="nav-content">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/produto">Produto</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cliente">Cliente</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/venda">Venda</a>
+      </li>
+    </ul>
+  </div>        
+  <div class="col-10">
+    <ng-content></ng-content>
+</div>
+</nav>
+
